@@ -1,6 +1,6 @@
 {
   "name": "license-collector",
-  "version": "0.0.40",
+  "version": "0.1.0",
   "description": "a license collector for npm and bower dependencies",
   "repository": "nielswijers/license-collector",
   "author": "niels wijers",
