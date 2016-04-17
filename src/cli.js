@@ -13,8 +13,6 @@ if (!program.args.length) {
   process.exit();
 }
 
-console.log('dasdas',program.output);
-
 licenseCollector(program.args[0], { verbose: true, output: program.output }).then(
   () => {
 
