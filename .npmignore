@@ -1,0 +1,6 @@
+.idea
+.travis.xml
+src
+coverage
+docs
+test

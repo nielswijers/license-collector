@@ -1,0 +1,19 @@
+{
+  "name": "test-project",
+  "authors": [
+    "foo@baz.com"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.2.2",
+    "angular": "1.5.3"
+  },
+  "devDependencies": {
+    "gulp": "3.9.1"
+  }
+}
