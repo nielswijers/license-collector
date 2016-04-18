@@ -15,15 +15,50 @@ $ npm install license-collector -g
 ```
 
 ### Getting Started
+You can use the license collector in the cli or in code.
 
+## CLI
 ```sh
 Usage: license-collector <directory ...> [options]
 
 Options:
 
-  -h, --help            output usage information
-  -V, --version         output the version number
-  -o, --output [value]  Outputfile, use .json or .yml.
+  -h, --help              output usage information
+  -V, --version           output the version number
+  -o, --output [value]    Outputfile, use .json or .yml.
+  -n, --no_npm            Ignore npm packages
+  -b, --no_bower          Ignore bower packages
+  -p, --patterns [value]  comma separated list of possibible license files. fg. "*license*,*readme*"
+```
+
+## Javascript
+
+```javascript
+var licenseCollector = require('license-collector').licenseCollector
+licenseCollector(__dirname, {
+    ignoreNpm: true,
+    output: 'licenses.json',
+    verbose: true,
+    licensePatterns: ['*license*', '*readme*']
+}).then(function (result) {
+    done()
+}, console.log)
+```
+
+## Gulp
+
+```javascript
+var licenseCollector = require('license-collector').licenseCollector
+gulp.task('licenses', function (done) {
+    licenseCollector(__dirname, {
+        ignoreNpm: true,
+        output: 'licenses.json',
+        verbose: true,
+        licensePatterns: ['*license*', '*readme*']
+    }).then(function (result) {
+        done()
+    }, console.log)
+})
 ```
 
 ### How to Test

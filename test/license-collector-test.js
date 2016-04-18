@@ -101,4 +101,19 @@ describe('license collector', () => {
     });
     expect(spy).to.have.been.called;
   });
+
+  it('should not include bower when bower is ignored', async() => {
+    const result = await licenseCollector(`${__dirname}/fixtures/test-project-bower-only`, { ignoreBower: true });
+    expect(result).to.be.lengthOf(0);
+  });
+
+  it('should not include npm when npm is ignored', async() => {
+    const result = await licenseCollector(`${__dirname}/fixtures/test-project-npm-only`, { ignoreNpm: true });
+    expect(result).to.be.lengthOf(0);
+  });
+
+  it('should not overwrite defaults when prop is undefined', async() => {
+    const result = await licenseCollector(`${__dirname}/fixtures/test-project-bower-only`, { licensePatterns: undefined });
+    expect(result[0]).to.contain.all.keys('name', 'version', 'licenseText');
+  });
 });
