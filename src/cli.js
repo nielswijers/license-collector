@@ -6,6 +6,10 @@ program
   .version(pkg.version)
   .usage('<directory ...> [options]')
   .option('-o, --output [value]', 'Outputfile, use .json or .yml.')
+  .option('-n, --no_npm', 'Ignore npm packages')
+  .option('-b, --no_bower', 'Ignore bower packages')
+  .option('-p, --patterns [value]', 'comma separated list of possibible license files. fg.' +
+    ' "*license*,*readme*"')
   .parse(process.argv);
 
 if (!program.args.length) {
@@ -13,7 +17,19 @@ if (!program.args.length) {
   process.exit();
 }
 
-licenseCollector(program.args[0], { verbose: true, output: program.output }).then(
+const patterns = program.patterns
+  ? program.patterns.split(',')
+  : undefined;
+
+console.log(patterns);
+
+licenseCollector(program.args[0], {
+  verbose: true,
+  output: program.output,
+  licensePatterns: patterns,
+  ignoreBower: program.no_bower,
+  ignoreNpm: program.no_npm,
+}).then(
   () => {
 
   },
